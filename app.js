@@ -15,7 +15,9 @@ app.use(bodyParser.json())
 //Routes
 //View com os estudantes inscritos no DB
 app.get('/list', function(req, res){
-    res.render('list');
+    Student.findAll().then(function(users){
+        res.render('list', {stu: users});
+    })    
 });
 
 app.get('/add-student', function(req, res){
