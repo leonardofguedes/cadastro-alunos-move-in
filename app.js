@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 //View com os estudantes inscritos no DB
 app.get('/list', function(req, res){
     Student.findAll().then(function(users){
-        res.render('list', {stu: users});
+        res.render('list', {devsdata: users});
     })    
 });
 
