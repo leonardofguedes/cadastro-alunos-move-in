@@ -2,7 +2,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars")
-const student = require("./models/students")
+const Student = require("./models/students")
 
 
 app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
 //Routes
+//View com os estudantes inscritos no DB
 app.get('/list', function(req, res){
     res.render('list');
 });
@@ -22,7 +23,7 @@ app.get('/add-student', function(req, res){
 });
 
 app.post('/student', function(req, res){
-    student.create({
+    Student.create({
         nome: req.body.nome,
         email: req.body.email
     }).then(function(){
