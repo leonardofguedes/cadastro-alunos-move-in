@@ -15,7 +15,8 @@ app.use(bodyParser.json())
 //Routes
 //View com os estudantes inscritos no DB
 app.get('/list', function(req, res){
-    Student.findAll().then(function(users){
+    //Find all students, on descrescent order
+    Student.findAll({order: [['id', 'DESC']]}).then(function(users){
         res.render('list', {devsdata: users});
     })    
 });
