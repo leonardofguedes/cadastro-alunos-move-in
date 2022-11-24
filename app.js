@@ -13,6 +13,10 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
 //Routes
+app.get('/', function(re,res){
+    res.render('home')
+});
+
 //View com os estudantes inscritos no DB
 app.get('/list', function(req, res){
     //Find all students, on descrescent order
