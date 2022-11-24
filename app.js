@@ -38,4 +38,14 @@ app.post('/student', function(req, res){
     //res.send("Nome: " + req.body.nome + "<br>Email: " + req.body.email)
 });
 
+app.get('/del-student/:id', function(req,res){
+    Student.destroy({
+        where: {'id': req.params.id}
+    }).then(function(){
+        res.redirect('/list')
+    }).catch(function(erro){
+        res.send('Cadastro não foi excluído com sucesso')
+    })
+})
+
 app.listen(8080);
